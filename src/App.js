@@ -1,65 +1,49 @@
-import logo from './logo.svg';
+import React, {Component} from 'react';
 import classes from './App.module.css';
-import ProductData from './ProductData';
+import ProductData from './ProductData/ProductData';
+import ProductInfo from './ProductInfo/ProductInfo';
+import ProductPreview from './ProductPreview/ProductPreview';
+import TopBar from './Topbar/TopBar';
 
-function App() {
+class App extends Component { 
+  
+  state = {
+    productData: ProductData,
+    currentPreviewImagePos: 0,
+    currentSelectedFeature: false
+  }
 
-  const currentHour = new Date().getHours();
-  const currentMinutes = new Date().getMinutes(); 
-  return (
-    <div className="App">
+  onColorOptionClick = (pos) =>{
+    this.setState({currentPreviewImagePos: pos});
+  }
 
-      <header>
-        <nav className={classes.Topbar}>
-          <img src="https://www.nicepng.com/png/detail/20-201280_amazon-video-logo-png-banner-freeuse-amazon-prime.png"/>
-        </nav>
-      </header>
+  onFeatureOptionClick = (pos) =>{
+    this.setState({currentSelectedFeature : pos});
+  }
 
-      <div className={classes.MainContainer}>
-        <div className = {classes.ProductPreview}>
-            <img src = "https://imgur.com/iOeUBV7.png" alt = "Black Strap"/>
+  render(){
+    return (
+      <div className="App">
 
-            {/*<div className={classes.FeatureData}>
-              <p >{`${currentHour}:${currentMinutes}`}</p>
-              </div>*/}
+        <header> 
+          <TopBar/>
+        </header>
 
-            <div className={classes.FeatureData}>
-            <i class="fas fa-heartbeat"></i>
-            <p>78</p>
-            </div>
-        </div>
-
-        <div className = {classes.ProductInfo}>
-          <h1 className = {classes.ProductTitle}>{ProductData.title}</h1>
-          <p className = {classes.ProductDescription}>{ProductData.description}</p>
-          <div className={classes.Line}></div>
-          <h3 className ={classes.Heading}> Select Color:</h3>
-          <div className={classes.OptionsContainer}>
-
-            <img className={[classes.ProductOption, classes.ProductOptionSelected].join(' ')} src="https://imgur.com/iOeUBV7.png" alt="Black Strap"/>
-            <img className={classes.ProductOption} src="https://imgur.com/PTgQlim.png" alt="Red Strap"/>
-            <img className={classes.ProductOption} src="https://imgur.com/Mplj1YR.png" alt="Blue Strap"/>
-            <img className={classes.ProductOption} src="https://imgur.com/xSIK4M8.png" alt="Purple Strap"/>
-
+        <div className={classes.MainContainer}>          
+        
+          <div className={classes.ProductPreview}>
+            <ProductPreview currentPreviewImage = {this.state.productData.colorOptions[this.state.currentPreviewImagePos].imageUrl} currentSelectedFeature = {this.state.currentSelectedFeature}/>
           </div>
 
-          <h3 className={classes.Heading}>Features</h3>
-
-          <div className={classes.FeaturesContainer}>
-            <button className={[classes.FeaturesBtn, classes.FeaturesBtnSelected].join(' ')}>Time</button>
-            <button className={classes.FeaturesBtn}>Heart Rate</button>
-          </div>
-
-          <button className={classes.BuyBtn}>Buy Now</button>
-
-
+          <div className={classes.ProductInfo}>
+            <ProductInfo data={this.state.productData} onColorOptionClick = {this.onColorOptionClick} currentPreviewImagePos={this.state.currentPreviewImagePos} onFeatureOptionClick = {this.onFeatureOptionClick} currentSelectedFeature = {this.state.currentSelectedFeature}/>
+          </div>          
 
         </div>
 
       </div>
-
-    </div>
-  );
+    );
+  }
 }
 
 export default App;

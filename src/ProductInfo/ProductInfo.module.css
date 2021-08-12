@@ -1,0 +1,87 @@
+/*-------Utilities-------*/
+.Line{
+    width: 80%;
+    background-color: teal;
+    height: 2px;
+}
+  
+  .Heading{
+    font-size: 20px;
+    font-weight: 600;
+    color:black;
+}
+/*-----------------------*/
+
+
+.ProductInfo{
+    width: 100%;
+    padding: 16px;
+}
+  
+.ProductTitle{
+    margin-top: 0;
+    margin-bottom: 16px;
+    font-size: 32px;
+    font-weight: bolder;
+}
+  
+.ProductDescription{
+    margin-top: 0;
+    margin-bottom: 16px;
+    font-size: 18px;
+    font-weight: 300;
+    color: rgb(0, 0, 0,.8);
+}
+  
+.OptionsContainer{
+    display: flex;
+}
+  
+.ProductOption{
+    width:100%;
+    max-width: 80px;
+    border: 2px solid transparent;
+    border-radius: 8px;
+    margin-right: 12px;
+    cursor: pointer;
+}
+  
+.ProductOptionSelected{
+    border: 2px solid teal;
+}
+  
+.FeaturesContainer{
+    display: flex;
+}
+  
+.FeaturesBtn{
+    padding: 12px 24px;
+    border-radius: 8px;
+    margin-right: 12px;
+    border: 0;
+    box-sizing: content-box;
+    background-color: gainsboro;
+    font-size: 12px;
+    font-weight:600;
+    color: #000;
+    cursor: pointer;
+}
+  
+.FeaturesBtnSelected{
+    color: #f6f6f6;
+    background-color: gray;
+}
+  
+.BuyBtn{
+    padding: 12px 24px;
+    margin-top: 36px ;
+    border-radius: 8px;
+    border: none;
+    background-color: teal;
+    font-size: 12px;
+    font-weight: 600;
+    color: #f6f6f6;
+}
+
+
+
